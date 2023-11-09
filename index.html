@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>World Xplore</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- <link rel="stylesheet" href="stylesheet.css"> -->
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: poppins;
+            }
+
+            body::-webkit-scrollbar{
+                display: none;
+            }
+
+            header {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                position: fixed;
+                top: 0;
+                background-color: white;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                z-index: 998;
+            }
+
+            header .logo {
+                padding: 0 0 0 20px;
+                height: 40px;
+                width: 40px;
+                transform-origin: 50% 50%;
+            }
+
+            header .logo:hover {
+                animation: scale 1s linear infinite;
+            }
+
+            header .logo:hover .st2 {
+                stroke-dasharray: 10;
+            }
+
+            @keyframes scale {
+                0%, 100% {
+                    transform: scale(1);
+                }
+                50% {
+                    transform: scale(1.1);
+                }
+            }    
+
+            header .navbar {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            header .navbar ul {
+                list-style: none;
+            }
+
+            header .navbar ul li {
+                position: relative;
+                float: left;
+            }
+            
+            header .navbar ul li a {
+                padding: 20px;
+                color: black;
+                display: block;
+                text-decoration: none;
+            }
+
+            header .navbar ul li a:hover {
+                color: white;
+                background-color: black;
+            }
+
+            header .navbar ul li ul {
+                position: absolute;
+                left: 0;
+                background-color: white;
+                display: none;
+            }
+
+            header .navbar ul li ul li {
+                width: 100%;
+                border-top: 1px solid rgba(0, 0, 0, 0.4);
+            }
+
+            header .navbar ul li:hover > ul {
+                display: initial;
+            }
+
+            #menu-bar {
+                display: none;
+            }
+
+            header label {
+                cursor: pointer;
+                display: none;
+            }
+
+            @media(max-width: 1200px){
+                header label {
+                    display: initial;
+                    padding: 20px;
+                }
+
+                header .navbar {
+                    position: absolute;
+                    top: 100%;
+                    background-color: white;
+                    border-top: 1px solid rgba(0, 0, 0, 0.4);
+                    display: none;
+                }
+
+                header .navbar ul li {
+                    width: 100vw;
+                }
+
+                header .navbar ul li ul {
+                    position: relative;
+                    width: 100vw;
+                }
+            }
+
+            #menu-bar:checked ~ .navbar {
+                display: initial;
+            }
+
+            .videoContainer {
+                height: 100vh;
+                width: 100vw;
+                overflow: hidden;
+            }
+
+            section {
+                position: absolute;
+                height: 50vh;
+                width: 100vw;
+                top: 50%;
+                transform: translate(0%, -50%); 
+                display: flex;
+                justify-content: center;
+            }
+
+            article {
+                margin: 20px 5vmin;
+                height: auto;
+                width: 75%;
+                border-radius: 10px;
+                background-size: cover;
+                background-position: center;
+                display: flex;
+                align-items: flex-end;
+                color: white;
+                box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4);
+                cursor: pointer;
+                filter: grayscale(100%) blur(1px);
+                transition: 0.3s;
+            }
+
+            article h2 {
+                margin: 0 0 20px 0;
+                padding: 10px;
+                background-color: black;
+            }
+
+            .article1 {
+                background-image: url("images/italy.jpg");
+            }
+
+            .article2 {
+                background-image: url("images/iceland.jpg");
+            }
+
+            .article3 {
+                background-image: url("images/japan.jpg");
+            }
+
+            article:hover {
+                scale: 1.05;
+                filter: grayscale(0%) blur(0px);
+                transition: 0.3s;
+            }
+
+            article button {
+                padding: 20px;
+                width: 40%;
+                color: white;
+                background-color: black;
+                align-self: center;
+                border-radius: 10px;
+                transition: 0.3s;
+            }
+
+            article button:hover {
+                box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+                transition: 0.3s;
+            }
+
+            footer {
+                color: white;
+                background-color: black;
+            }
+
+            footer .row {
+                padding: 5%;
+                display: flex;
+                justify-content: center;
+            }
+
+            footer .column {
+                margin: 0 5%;
+            }
+
+            footer ul {
+                list-style: none;
+            }
+
+            footer li:not(:last-child) {
+                height: 50px;
+                display: flex;
+                align-items: center;
+            }
+
+            footer a {
+                color: grey;
+                text-decoration: none;
+            }
+
+            footer a:hover {
+                color: white;
+                text-decoration: underline;
+            }
+
+            footer i {
+                font-size: 50px;
+                flex-direction: row;
+            }
+
+            footer .lastColumn li {
+                margin: 10px 0 0 0;
+            }
+
+            @media(max-width: 768px) {
+                footer .row {
+                    flex-direction: column;
+                }
+            }
+
+            .copyright {
+                padding: 10px;
+                text-align: center;
+                color: rgba(255, 255, 255, 0.8);
+                background-color: black;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <a href="index.html" class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                    <style type="text/css">
+                        .st0{font-family:'Poppins';}
+                        .st1{font-size:48px;}
+                        .st2{fill:none;stroke:#000000;stroke-width:5;stroke-miterlimit:10;}
+                    </style>
+                    <g id="Layer_1">
+                        <text transform="matrix(1 0 0 1 11.34 68.5547)" class="st0 st1">WX</text>
+                    </g>
+                    <g id="Layer_2">
+                        <circle class="st2" cx="50" cy="50" r="47.5"/>
+                    </g>
+                </svg>
+            </a>
+
+            <input type="checkbox" id="menu-bar">
+            <label for="menu-bar"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></label>
+
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Package Tours +</a>
+                        <ul>
+                            <li><a href="italy.html">Italy</a></li>
+                            <li><a href="iceland.html">Iceland</a></li>
+                            <li><a href="japan.html">Japan</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Rediscover Singapore</a></li>
+                    <li><a href="#">Cruises</a></li>
+                    <li><a href="contactUs.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <div class="videoContainer">
+            <video autoplay muted loop>
+                <source src="videos/video2.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <section>
+            <article class="article1" onclick="movePage('italy.html')">
+                <div class="articleContent">
+                    <h2>Italy</h2>
+                </div>
+            </article>
+
+            <article class="article2" onclick="movePage('iceland.html')">
+                <div class="articleContent">
+                    <h2>Iceland</h2>
+                </div>
+            </article>
+
+            <article class="article3" onclick="movePage('japan.html')">
+                <div class="articleContent">
+                    <h2>Japan</h2>
+                </div>
+            </article>
+        </section>
+
+        <footer>
+            <div class="row">
+                <div class="column">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Services</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h4>Get Help</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Payment Methods</a></li>
+                    </ul>
+                </div>
+                <div class="column lastColumn">
+                    <h4>Follow Us</h4>
+                    <ul>
+                        <li><a href="#"><i class="fa-brands fa-github"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+
+        <div class="copyright">
+            © 2023 Copyright Clarence Tan
+        </div>
+
+        <script>
+            function movePage(url) {
+                window.location.href = url;
+            }
+        </script>
+    </body>
+</html>

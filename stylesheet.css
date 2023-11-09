@@ -1,0 +1,265 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: poppins;
+}
+
+body::-webkit-scrollbar{
+    display: none;
+}
+
+header {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background-color: white;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 998;
+}
+
+header .logo {
+    padding: 0 0 0 20px;
+    height: 40px;
+    width: 40px;
+    transform-origin: 50% 50%;
+}
+
+header .logo:hover {
+    animation: scale 1s linear infinite;
+}
+
+header .logo:hover .st2 {
+    stroke-dasharray: 10;
+}
+
+@keyframes scale {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}    
+
+header .navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header .navbar ul {
+    list-style: none;
+}
+
+header .navbar ul li {
+    position: relative;
+    float: left;
+}
+
+header .navbar ul li a {
+    padding: 20px;
+    color: black;
+    display: block;
+    text-decoration: none;
+}
+
+header .navbar ul li a:hover {
+    color: white;
+    background-color: black;
+}
+
+header .navbar ul li ul {
+    position: absolute;
+    left: 0;
+    background-color: white;
+    display: none;
+}
+
+header .navbar ul li ul li {
+    width: 100%;
+    border-top: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+header .navbar ul li:hover > ul {
+    display: initial;
+}
+
+#menu-bar {
+    display: none;
+}
+
+header label {
+    cursor: pointer;
+    display: none;
+}
+
+@media(max-width: 1200px){
+    header label {
+        display: initial;
+        padding: 20px;
+    }
+
+    header .navbar {
+        position: absolute;
+        top: 100%;
+        background-color: white;
+        border-top: 1px solid rgba(0, 0, 0, 0.4);
+        display: none;
+    }
+
+    header .navbar ul li {
+        width: 100vw;
+    }
+
+    header .navbar ul li ul {
+        position: relative;
+        width: 100vw;
+    }
+}
+
+#menu-bar:checked ~ .navbar {
+    display: initial;
+}
+
+.header2 {
+    margin: 65px 0 0 0;
+    background-color: #0066cc;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 32px;
+}
+
+
+.container {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container img {
+    width: 65%;
+}
+
+.cropped-image {
+    margin: 50px 0 0 0;
+    width: 100%;
+    height: 20vh;
+    object-fit: cover;
+}
+
+.container .detailsContainer {
+    padding: 20px;
+    margin: 20px 0;
+    width: calc(65% - 40px);
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.container .description {
+    width: 65%;
+}
+
+button {
+    padding: 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: blue;
+    color: white;
+    transition: 0.3s;
+}
+
+button:hover {
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
+    transition: 0.3s;
+}
+
+.container2 {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container2 .header, .container2 .💀 {
+    width: 65%;
+}
+
+.container2 .header {
+    margin: 20px 0;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+footer {
+    margin: 20px 0 0 0;
+    color: white;
+    background-color: black;
+}
+
+footer .row {
+    padding: 5%;
+    display: flex;
+    justify-content: center;
+}
+
+footer .column {
+    margin: 0 5%;
+}
+
+footer ul {
+    list-style: none;
+}
+
+footer li:not(:last-child) {
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+footer a {
+    color: grey;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+footer i {
+    font-size: 50px;
+    flex-direction: row;
+}
+
+footer .lastColumn li {
+    margin: 10px 0 0 0;
+}
+
+@media(max-width: 768px) {
+    footer .row {
+        flex-direction: column;
+    }
+}
+
+.copyright {
+    padding: 10px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+    background-color: black;
+}
